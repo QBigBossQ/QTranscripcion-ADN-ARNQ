@@ -40,7 +40,7 @@ textarea { width:75ex; }
 	
 	<td colspan="2">
 	  <b><p id="titDNA">Hebra codificante de DNA: 
-			<input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.geneString.value=''" id="cifrar" onkeypress="return isText(event)">
+			<input class="btn btn btn-danger" type="button" value="x" onClick="this.form.geneString.value=''" id="cifrar" onkeypress="return isText(event)">
 	  </p>
 	  <!-- este era el que estaba primero<textarea name="geneString" rows="7" cols="45"></textarea>-->
 	  <p>5' ATAT<input type="text" id="txt" onkeypress="return isText(event)" name="geneString">3'</p></b>
@@ -67,7 +67,7 @@ textarea { width:75ex; }
 
 	<td rowspan="2">
 		<!-- Este tambien es de texto <textarea name="proteinString" rows="7" cols="45"></textarea>-->
-		 <b><p id="titProt">Aminoacidos &nbsp; &nbsp; <input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.proteinString.value=''"></p>
+		 <b><p id="titProt">Aminoacidos &nbsp; &nbsp; <input class="btn btn btn-danger" type="button" value="x" onClick="this.form.proteinString.value=''"></p>
 		 <p><input type="text" id="txt" onkeypress="return isText(event)" name="proteinString" readonly="true"></p>
 		 <br><input type="button" value="traduccion" onClick="this.form.proteinString.value=translatePlus(this.form.messageString.value)" class="btn btn btn-success"><br>
 	  
@@ -92,7 +92,7 @@ textarea { width:75ex; }
 	
 	<td colspan="2">
 	  <b><p id="titRNA">Hebra inmadura de RNA: 
-			<input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.messageString.value=''" onkeypress="return isText(event)">
+			<input class="btn btn btn-danger" type="button" value="x" onClick="this.form.messageString.value=''" onkeypress="return isText(event)">
 	</p>
 	<!-- TAmbbien se quita <textarea name="messageString" rows="7" cols="45"></textarea>-->
 	 <p>5'<input type="text" id="txt2" onkeypress="return isText2(event)" name="messageString">3'</p>
