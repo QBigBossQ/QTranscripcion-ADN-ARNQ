@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+<head>
+	  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+   <title>QDNA TranscripcionQ</title>
+<link href="../cybert.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="https://image.flaticon.com/icons/png/128/3325/3325069.png">
+<link href="css/estilos.css" rel="stylesheet" type="text/css">
+<script src="js/messages_es.js" type="text/javascript"></script>
+<script src="js/logica2.js" type="text/javascript"></script>
+<script src="js/logica.js" type="text/javascript"></script>
+<script type="text/javascript">
+function gid(x) { return document.getElementById(x); }
+function translatePlus(x) {
+	if ( gid('detectaIni').checked ) {
+		x = x.substring(x.indexOf('AUG'));
+	}
+	x = transLate(x);
+	if ( gid('detectaFin').checked ) {
+		x = x.substring(0,x.indexOf('.')+1);
+	}
+	return x;
+}
+</script>
+<style type="text/css">
+td>p { margin-top:0; }
+textarea { width:75ex; }
+</style>
+</head>
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<body class="trans">
+<div align="center"><h1>Transcripcion y Traduccion</h1></div>
+<div align="center">
+<form>
+<center><table width="70%" height="70%" align="center" valign="middle" style="margin: 0 auto;">
+	 <tbody class="foto" background="https://portalacademico.cch.unam.mx/sites/default/files/b1u2oa12p03-21.jpg">
+  <tr>
+	
+	<td colspan="2">
+	  <b><p id="titDNA">Hebra codificante de DNA: 
+			<input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.geneString.value=''" id="cifrar" onkeypress="return isText(event)">
+	  </p>
+	  <!-- este era el que estaba primero<textarea name="geneString" rows="7" cols="45"></textarea>-->
+	  <p>5' ATAT<input type="text" id="txt" onkeypress="return isText(event)" name="geneString">3'</p></b>
+
+
+	</td>
+
+  </tr>
+
+  <tr>
+    
+	<td >
+	<br><input type="button" value="Polimerasa II" 
+		onClick="this.form.messageString.value=tranScribe(this.form.geneString.value)"  class="btn btn btn-primary">
+		<input type="button" value="transcripcion inversa" 
+		onClick="this.form.geneString.value=revTranScribe(this.form.messageString.value)" class="btn btn btn-success">
+	<br>
+	</td>
+	<!--<td class="toCtr">
+	<input type="button" value="transcripcion inversa" 
+		onClick="this.form.geneString.value=revTranScribe(this.form.messageString.value)">
+	
+	</td>-->
+
+	<td rowspan="2">
+		<!-- Este tambien es de texto <textarea name="proteinString" rows="7" cols="45"></textarea>-->
+		 <b><p id="titProt">Aminoacidos &nbsp; &nbsp; <input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.proteinString.value=''"></p>
+		 <p><input type="text" id="txt" onkeypress="return isText(event)" name="proteinString" readonly="true"></p>
+		 <br><input type="button" value="traduccion" onClick="this.form.proteinString.value=translatePlus(this.form.messageString.value)" class="btn btn btn-success"><br>
+	  
+			
+	  </p></b>
+	</td>
+
+
+  </tr>
+
+  <tr>
+	<!--<td>
+	<p class="toCtr"><span class="RNA">RNA</span> (<span class="RNA">r</span>ibo<span class="RNA">n</span>ucleic
+	<span class="RNA">a</span>cid;
+	<br>Acido ribonucleico o ARN)
+	</p>
+	<ul>
+	<li>el RNA mensajero (mRNA) es una copia temporal de la secuencia
+	del gen en la cual esta codificada la proteina. </li>
+	</ul>
+	</td>-->
+	
+	<td colspan="2">
+	  <b><p id="titRNA">Hebra inmadura de RNA: 
+			<input class="btn btn btn-danger" type="button" value="borrar" onClick="this.form.messageString.value=''" onkeypress="return isText(event)">
+	</p>
+	<!-- TAmbbien se quita <textarea name="messageString" rows="7" cols="45"></textarea>-->
+	 <p>5'<input type="text" id="txt2" onkeypress="return isText2(event)" name="messageString">3'</p>
+	 <input class="btn btn btn-info" type="button" id="btn1" value="Madurar1" onkeypress="return isText(event)" onclick="cambiarboton()">
+	 <input class="btn btn btn-info" type="button" id="btn2" value="Madurar2" onkeypress="return isText(event)" onclick="cambiarboton2()">
+	 <input class="btn btn btn-info" type="button" id="btn3" value="Madurar3" onkeypress="return isText(event)" onclick="cambiarboton3()">
+	 
+	</b>
+	</td>
+	
+  </tr>
+
+  <tr>
+	<td></td>
+
+	<td colspan="2" class="toCtr">
+	<!--<br><input type="button" value="traduccion" onClick="this.form.proteinString.value=translatePlus(this.form.messageString.value)" class="btn btn btn-success"><br>-->
+	
+	<div class="peque">
+	  <div style="white-space:nowrap;">
+		<input type="checkbox" id="detectaIni" onChange="this.form.proteinString.value=translatePlus(this.form.messageString.value)" hidden="true"><!--detectar codón de inicio-->
+	  </div>
+	  <div style="white-space:nowrap;">
+	<input type="checkbox" id="detectaFin" onChange="this.form.proteinString.value=translatePlus(this.form.messageString.value)" hidden="true" readonly="true"><!--detectar codón de terminación-->
+	  </div>
+	</div>
+	</td>
+  </tr>
+
+</table></center>
+</form>
+</div>
+<footer>
+	<font color="white">
+	QCC
+	</font>
+</footer>
+<script>
+       function isText(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 65 || charCode == 67 || charCode == 71 || charCode == 84 || charCode == 97 || charCode == 99 || charCode == 103 || charCode == 116) {
+                return true;
+            }
+            return false;
+        }
+        function isText2(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 65 || charCode == 67 || charCode == 71 || charCode == 85 || charCode == 97 || charCode == 99 || charCode == 103 || charCode == 117) {
+                return true;
+            }
+            return false;
+        }
+       function isNumber(evt) {
+           evt = (evt) ? evt : window.event;
+           var charCode = (evt.which) ? evt.which : evt.keyCode;
+           if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+               return false;
+           }
+           return true;
+        }
+  </script>
+  
+</body>
+</html>
